@@ -2,24 +2,45 @@
 
 A comprehensive Next.js application that simulates Bitcoin network dynamics after block rewards end (0 BTC subsidy). This tool helps visualize how the network might behave when miners rely solely on transaction fees for revenue.
 
+## Author
+
+**Fabio Balielo** - Advanced economic modeling and blockchain analysis
+
+- **Project**: EndPow - Bitcoin Post-Reward Economics
+- **Expertise**: Bitcoin economics, network security, fee market dynamics
+- **Contact**: [@fabio_balielo](https://twitter.com/fabio_balielo)
+
+## About This Project
+
+This simulator represents advanced economic modeling of Bitcoin's transition to a fee-only mining economy. The analysis includes:
+
+- **Network Security Modeling**: Attack cost calculations and security budget requirements
+- **Fee Market Dynamics**: Optimal fee rates for sustainable mining operations
+- **Economic Equilibrium**: Hashrate sustainability and miner profitability analysis
+- **Real-time Data Integration**: Live Bitcoin metrics and market conditions
+
 ## Features
 
 ### Real-time Data Integration
+
 - **Live Bitcoin Metrics**: Price, hashrate, difficulty, mempool size, average fees, transaction throughput
 - **API Sources**: mempool.space, CoinGecko, Blockchain.com
 - **WebSocket/SSE**: Real-time updates every 30 seconds
 
 ### Interactive Simulation
+
 - **Parameter Controls**: Adjust BTC price, transaction demand, miner costs, block size limits, fee curves
 - **Economic Modeling**: Calculate miner revenue from fees only, network security metrics, difficulty adjustments
 - **Scenario Testing**: Explore different post-reward economic conditions
 
 ### Visualization
+
 - **Interactive Charts**: Built with Recharts for responsive data visualization
 - **Key Metrics**: Fee rates, hashrate trends, miner revenue, transaction backlog, confirmation times
 - **Real-time Updates**: Charts update automatically with new data
 
 ### Modern Tech Stack
+
 - **Frontend**: Next.js 14, React 18, TypeScript
 - **UI**: TailwindCSS, shadcn/ui components, Framer Motion animations
 - **Database**: Prisma ORM with PostgreSQL
@@ -29,6 +50,7 @@ A comprehensive Next.js application that simulates Bitcoin network dynamics afte
 ## Quick Start
 
 ### Prerequisites
+
 - Node.js 18+
 - Docker and Docker Compose (recommended)
 - PostgreSQL (if not using Docker)
@@ -37,36 +59,41 @@ A comprehensive Next.js application that simulates Bitcoin network dynamics afte
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd bitcoin-post-reward-simulator
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables**
+
    ```bash
    cp .env.example .env
    # Edit .env with your database and API configurations
    ```
 
 4. **Start with Docker (Recommended)**
+
    ```bash
    docker-compose up -d
    ```
 
 5. **Or start manually**
+
    ```bash
    # Start PostgreSQL and Redis
    # Update DATABASE_URL and REDIS_URL in .env
-   
+
    # Generate Prisma client and push schema
    npx prisma generate
    npx prisma db push
-   
+
    # Start development server
    npm run dev
    ```
@@ -98,6 +125,7 @@ NEXT_PUBLIC_READ_ONLY_MODE="false"
 ```
 
 ### API Rate Limits
+
 - **Without API keys**: Basic rate limits apply
 - **With API keys**: Higher rate limits and more reliable data
 - **Fallback data**: App works offline with simulated data
@@ -105,6 +133,7 @@ NEXT_PUBLIC_READ_ONLY_MODE="false"
 ## Architecture
 
 ### Data Flow
+
 1. **Data Collection**: APIs fetch real-time Bitcoin network data
 2. **Caching**: Redis caches API responses to reduce external calls
 3. **Simulation**: User parameters modify base data for scenario modeling
@@ -112,6 +141,7 @@ NEXT_PUBLIC_READ_ONLY_MODE="false"
 5. **Real-time Updates**: WebSocket/SSE pushes updates to connected clients
 
 ### Key Components
+
 - **NetworkDashboard**: Overview of current network state
 - **SimulationControls**: Interactive parameter adjustment
 - **MetricsCharts**: Historical data visualization
@@ -120,6 +150,7 @@ NEXT_PUBLIC_READ_ONLY_MODE="false"
 ## Simulation Parameters
 
 ### Economic Variables
+
 - **Bitcoin Price**: $10,000 - $200,000
 - **Transaction Demand**: 0.1x - 5.0x current levels
 - **Miner Operating Costs**: $0.01 - $0.20 per TH/s
@@ -127,6 +158,7 @@ NEXT_PUBLIC_READ_ONLY_MODE="false"
 - **Fee Rate Multiplier**: 0.1x - 10.0x current rates
 
 ### Calculated Metrics
+
 - **Miner Revenue**: Fee-only income per block
 - **Network Security**: Economic security based on mining costs
 - **Confirmation Times**: Average time for transaction confirmation
@@ -135,6 +167,7 @@ NEXT_PUBLIC_READ_ONLY_MODE="false"
 ## Development
 
 ### Project Structure
+
 ```
 ├── app/                 # Next.js app directory
 │   ├── api/            # API routes
@@ -151,6 +184,7 @@ NEXT_PUBLIC_READ_ONLY_MODE="false"
 ```
 
 ### Available Scripts
+
 ```bash
 npm run dev          # Start development server
 npm run build        # Build for production
@@ -162,6 +196,7 @@ npm run db:studio    # Open Prisma Studio
 ```
 
 ### Adding New Features
+
 1. **New Metrics**: Add to `BitcoinMetrics` interface and API integration
 2. **Charts**: Create new chart components in `MetricsCharts.tsx`
 3. **Parameters**: Add controls in `SimulationControls.tsx`
@@ -170,6 +205,7 @@ npm run db:studio    # Open Prisma Studio
 ## Deployment
 
 ### Docker Production
+
 ```bash
 # Build and start production containers
 docker-compose -f docker-compose.prod.yml up -d
@@ -180,6 +216,7 @@ docker run -p 3000:3000 bitcoin-simulator
 ```
 
 ### Environment Setup
+
 - Set `NODE_ENV=production`
 - Configure production database URLs
 - Set up SSL certificates for HTTPS
@@ -188,11 +225,13 @@ docker run -p 3000:3000 bitcoin-simulator
 ## API Documentation
 
 ### Endpoints
+
 - `GET /api/bitcoin` - Fetch current Bitcoin metrics
 - `POST /api/bitcoin` - Submit simulation parameters
 - `GET /api/ws` - WebSocket/SSE connection for real-time updates
 
 ### Data Sources
+
 - **mempool.space**: Mempool data, fee rates, network stats
 - **CoinGecko**: Bitcoin price data
 - **Blockchain.com**: Additional network metrics
@@ -212,6 +251,7 @@ MIT License - see LICENSE file for details
 ## Support
 
 For issues and questions:
+
 - Create an issue on GitHub
 - Check existing documentation
 - Review API rate limits and configurations

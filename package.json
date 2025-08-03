@@ -2,6 +2,22 @@
   "name": "bitcoin-post-reward-simulator",
   "version": "0.1.0",
   "private": true,
+  "description": "Advanced Bitcoin network economics simulator for post-reward era analysis",
+  "author": "Fabio Balielo",
+  "license": "MIT",
+  "keywords": [
+    "bitcoin",
+    "blockchain",
+    "economics",
+    "mining",
+    "simulation",
+    "cryptocurrency"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabiobalielo/endpow"
+  },
+  "homepage": "https://bitcoin-post-reward-simulator.fly.dev",
   "packageManager": "pnpm@8.0.0",
   "scripts": {
     "dev": "next dev",

@@ -63,7 +63,9 @@ export function Header({ connectionStatus, lastUpdate }: HeaderProps) {
           >
             <div className="flex items-center space-x-1 sm:space-x-2">
               {getStatusIcon()}
-              <span className="text-slate-300 hidden sm:inline">{getStatusText()}</span>
+              <span className="text-slate-300 hidden sm:inline">
+                {getStatusText()}
+              </span>
               <span className="text-slate-300 sm:hidden">Live</span>
             </div>
             {lastUpdate && (
