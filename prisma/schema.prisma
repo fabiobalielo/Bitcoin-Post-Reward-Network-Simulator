@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model BitcoinMetrics {
+  id                String   @id @default(cuid())
+  timestamp         DateTime @default(now())
+  
+  // Real-time data
+  price             Float
+  hashrate          Float    // TH/s
+  difficulty        Float
+  mempoolSize       Int      // number of transactions
+  avgFeeRate        Float    // sat/vB
+  txThroughput      Float    // tx/s
+  blockHeight       Int
+  
+  // Simulation parameters
+  simulatedPrice    Float?
+  simulatedTxDemand Float?
+  minerCostPerTH    Float?
+  blockspaceLimit   Int?
+  
+  // Calculated metrics
+  minerRevenue      Float?   // BTC per block from fees only
+  networkSecurity   Float?   // estimated security level
+  avgConfirmTime    Float?   // minutes
+  txBacklog         Int?     // pending transactions
+  
+  @@map("bitcoin_metrics")
+}
+
+model SimulationSession {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  name        String?
+  parameters  Json     // Store simulation parameters
+  results     Json?    // Store simulation results
+  isActive    Boolean  @default(false)
+  
+  @@map("simulation_sessions")
+}
+
+model NetworkSnapshot {
+  id              String   @id @default(cuid())
+  timestamp       DateTime @default(now())
+  
+  totalHashrate   Float
+  difficulty      Float
+  avgBlockTime    Float    // minutes
+  mempoolBacklog  Int
+  avgFeeRate      Float
+  
+  // Post-reward simulation data
+  minerRevenue    Float    // BTC per block
+  securityBudget  Float    // USD equivalent
+  networkHealth   Float    // 0-1 score
+  
+  @@map("network_snapshots")
+}
